@@ -24,7 +24,7 @@ $ docker run -p 9000:9000 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouch
   - HDFS namenode -> `50020`
   - HDFS Web browser -> `50070`
   - HDFS datanodes -> `50075`
-  - HDFS secondary namenode -> `50075`
+  - HDFS secondary namenode -> `50090`
 
 
 ## Contributing

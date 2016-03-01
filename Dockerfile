@@ -44,6 +44,6 @@ EXPOSE 50070
 # HDFS datanodes
 EXPOSE 50075
 # HDFS secondary namenode
-EXPOSE 50075
+EXPOSE 50090
 
 CMD service ssh start && start-dfs.sh && bash
