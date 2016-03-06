@@ -13,17 +13,18 @@ $ docker build -t mdouchement/hdfs .
 
 ```sh
 # Running and get a Bash interpreter
-$ docker run -p 9000:9000 -p 50020:50020 -p 50070:50070 -p 50075:50075 -it mdouchement/hdfs
+$ docker run -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -it mdouchement/hdfs
 
 # Running as daemon
-$ docker run -p 9000:9000 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouchement/hdfs
+$ docker run -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouchement/hdfs
 ```
 
 - Ports
-  - hdfs://localhost:9000 -> `9000`
-  - HDFS namenode -> `50020`
+  - HDFS namenode -> `9000` (hdfs://localhost:9000)
+  - HDFS datanode -> `50010`
+  - HDFS datanode (ipc) -> `50020`
   - HDFS Web browser -> `50070`
-  - HDFS datanodes -> `50075`
+  - HDFS datanode (http) -> `50075`
   - HDFS secondary namenode -> `50090`
 
 
