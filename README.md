@@ -2,6 +2,8 @@
 
 Docker image for single HDFS node.
 
+**Only for development purpose.**
+
 License: **MIT**
 
 ## Local build
@@ -13,10 +15,10 @@ $ docker build -t mdouchement/hdfs .
 
 ```sh
 # Running and get a Bash interpreter
-$ docker run -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -it mdouchement/hdfs
+$ docker run -p 22022:22 -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -it mdouchement/hdfs
 
 # Running as daemon
-$ docker run -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouchement/hdfs
+$ docker run -p 22022:22 -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouchement/hdfs
 ```
 
 - Ports
@@ -26,6 +28,7 @@ $ docker run -p 9000:9000 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:
   - HDFS Web browser -> `50070`
   - HDFS datanode (http) -> `50075`
   - HDFS secondary namenode -> `50090`
+  - SSH -> `22`
 
 
 ## Contributing
