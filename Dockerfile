@@ -9,6 +9,7 @@ RUN apt-get -qy dist-upgrade
 
 RUN apt-get install -qy rsync curl openssh-server openssh-client vim
 
+RUN mkdir -p /data/hdfs-nfs-proxy/tmp
 RUN mkdir -p /opt
 WORKDIR /opt
 
@@ -37,7 +38,7 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/ss
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 # => Quick fix for enabling datanode connections
-#    ssh -L 50010:localhost:50010 root@192.168.99.100 -p 22022 -o PreferredAuthentications=password 
+#    ssh -L 50010:localhost:50010 root@192.168.99.100 -p 22022 -o PreferredAuthentications=password
 
 # Pseudo-Distributed Operation
 COPY etc/hadoop/core-site.xml etc/hadoop/core-site.xml
@@ -46,8 +47,8 @@ RUN hdfs namenode -format
 
 # SSH
 EXPOSE 22
-# hdfs://localhost:9000
-EXPOSE 9000
+# hdfs://localhost:8020
+EXPOSE 8020
 # HDFS namenode
 EXPOSE 50020
 # HDFS Web browser
