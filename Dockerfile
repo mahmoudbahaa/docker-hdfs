@@ -7,9 +7,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get -qy dist-upgrade
 
-RUN apt-get install -qy rsync curl openssh-server openssh-client vim
+RUN apt-get install -qy rsync curl openssh-server openssh-client vim nfs-common
 
-RUN mkdir -p /data/hdfs-nfs-proxy/tmp
+RUN mkdir -p /data/hdfs-nfs/
 RUN mkdir -p /opt
 WORKDIR /opt
 
@@ -58,4 +58,8 @@ EXPOSE 50075
 # HDFS secondary namenode
 EXPOSE 50090
 
-CMD service ssh start && start-dfs.sh && bash
+CMD service ssh start \
+  && start-dfs.sh \
+  && hadoop-daemon.sh start portmap \
+  && hadoop-daemon.sh start nfs3 \
+  && bash

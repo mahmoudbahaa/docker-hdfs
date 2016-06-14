@@ -101,4 +101,26 @@
         interfaces by setting it to 0.0.0.0.
       </description>
     </property>
+
+    <!-- Enable NFS -->
+    <!-- https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-hdfs/HdfsNfsGateway.html -->
+    <property>
+      <name>dfs.namenode.accesstime.precision</name>
+      <value>3600000</value>
+      <description>
+        The access time for HDFS file is precise up to this value.
+        The default value is 1 hour. Setting a value of 0 disables
+        access times for HDFS.
+      </description>
+    </property>
+
+    <property>
+      <name>dfs.nfs3.dump.dir</name>
+      <value>/data/hdfs-nfs/</value>
+    </property>
+
+    <property>
+      <name>dfs.nfs.exports.allowed.hosts</name>
+      <value>* rw</value>
+    </property>
 </configuration>

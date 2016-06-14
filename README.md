@@ -17,11 +17,16 @@ $ docker build -t mdouchement/hdfs .
 # Running and get a Bash interpreter
 $ docker run -p 22022:22 -p 8020:8020 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -it mdouchement/hdfs
 
+# With NFS
+$ docker run -p 22022:22 -p 8020:8020 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -p 111:111 -p 2049:2049 -it mdouchement/hdfs
+
 # Running as daemon
 $ docker run -p 22022:22 -p 8020:8020 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -d mdouchement/hdfs
 ```
 
 - Ports
+  - Portmap -> `111`
+  - NFS -> `2049`
   - HDFS namenode -> `8020` (hdfs://localhost:8020)
   - HDFS datanode -> `50010`
   - HDFS datanode (ipc) -> `50020`
