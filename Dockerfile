@@ -8,7 +8,7 @@ ARG HADOOP_VERSION=2.7.7
 # Refresh package lists
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get -y upgrade
-RUN apt-get install -qy rsync curl openssh-server openssh-client vim nfs-common netcat
+RUN apt-get install -qy rsync curl openssh-server openssh-client vim nfs-common netcat iproute2
 
 RUN mkdir -p /data/hdfs-nfs/
 RUN mkdir -p /opt
