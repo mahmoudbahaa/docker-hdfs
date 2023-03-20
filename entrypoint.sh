@@ -10,6 +10,7 @@ init_config() {
     sed -i -e "s/HDFS_HOST/$host/" /opt/hadoop/etc/hadoop/core-site.xml
     sed -i -e "s/HDFS_PORT/$port/" /opt/hadoop/etc/hadoop/core-site.xml
     sed -i -e "s/#Port 22/Port $ssh_port/" /etc/ssh/sshd_config
+    sed -i -e "s+# export JAVA_HOME=+export JAVA_HOME=$JAVA_HOME+" /opt/hadoop/etc/hadoop/hadoop-env.sh
 
     ssh-keygen -t rsa -b 1024 -f /root/.ssh/id_rsa -N ""
     cp -v /root/.ssh/{id_rsa.pub,authorized_keys}

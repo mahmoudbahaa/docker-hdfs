@@ -1,9 +1,8 @@
 FROM openjdk:8-slim
-MAINTAINER Pravega Team
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG HADOOP_VERSION=2.7.7
+ARG HADOOP_VERSION=3.2.0
 
 # Refresh package lists
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
@@ -21,8 +20,10 @@ RUN mv hadoop-$HADOOP_VERSION hadoop
 # Setup
 WORKDIR /opt/hadoop
 ENV PATH /opt/hadoop/bin:/opt/hadoop/sbin:$PATH
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-RUN sed --in-place='.ori' -e "s/\${JAVA_HOME}/\/usr\/lib\/jvm\/java-8-openjdk-amd64/" etc/hadoop/hadoop-env.sh
+ENV JAVA_HOME /usr/local/openjdk-8/
+ENV HDFS_NAMENODE_USER=root
+ENV HDFS_DATANODE_USER=root
+ENV HDFS_SECONDARYNAMENODE_USER=root
 
 # Configure ssh client
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa && \
